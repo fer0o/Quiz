@@ -37,8 +37,8 @@ function App () {
   //finish de las preguntas, mostrar el marcador
   if (isFinished)
     return (
-      <div className='container mx-auto block my-48 border-2 border-black'>
-        <span className='flex justify-center'>
+      <div className=' grid grid-rows-2 border-2 border-black p-8 m-8 gap-5'>
+        <span className='flex justify-center text-3xl font-bold'>
           Obtuviste {puntuacion} de {preguntas.length}
         </span>
         <button
@@ -49,7 +49,7 @@ function App () {
         </button>
         <button
           className=' border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-auto '
-          onClick={()=>{
+          onClick={() => {
             setIsFinished(false)
             setMostrarRespuestas(true)
             setPreguntaActual(0)
@@ -59,42 +59,62 @@ function App () {
         </button>
       </div>
     )
-    //return de mostrar respuestas
-    if(mostrarRespuestas)return(
-      
-                <div>
-          <div>
-            <span>pregunta {preguntaActual + 1} de </span> {preguntas.length}
-          </div>
-          <div>{preguntas[preguntaActual].titulo}</div>
-          <div>{preguntas[preguntaActual].opciones.filter((opcion)=> opcion.isCorrect)[0].textoRespuesta}</div>
-          <button onClick={()=>{
-                  if (preguntaActual === preguntas.length - 1) {
-                    window.location.href='/'
-                  } else {
-                    setPreguntaActual(preguntaActual + 1)
-                  }
-          }}>
-                            {
-                  preguntaActual === preguntas.length-1 ? 'Voler a jugar': 'Siguiente'
-                }
+  //return de mostrar respuestas
+  if (mostrarRespuestas)
+    return (
+      <div className='grid grid-rows-3 border-2 border-black p-8 m-8 gap-5'>
+        <span className='block text-center text-2xl font-semibold'>
+          pregunta {preguntaActual + 1} de {preguntas.length}{' '}
+        </span>
+        <span className='block text-center text-3xl'>
+          {preguntas[preguntaActual].titulo}
+        </span>
+        <div>
+          <span className='block text-center text-2xl font-extrabold'>
+            {
+              preguntas[preguntaActual].opciones.filter(
+                opcion => opcion.isCorrect
+              )[0].textoRespuesta
+            }
+          </span>
+        </div>
+        <div>
+          <button
+            className='border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-full '
+            onClick={() => {
+              if (preguntaActual === preguntas.length - 1) {
+                window.location.href = '/'
+              } else {
+                setPreguntaActual(preguntaActual + 1)
+              }
+            }}
+          >
+            {preguntaActual === preguntas.length - 1
+              ? 'Voler a jugar'
+              : 'Siguiente'}
           </button>
         </div>
-      
+      </div>
     )
   return (
     //return principal
     <div>
-      <div className='grid grid-cols-1 lg:grid-cols-2 border-2 border-black m-4'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 border-2 border-black border-l-2 m-8 p-8'>
         {/* lado izquierdo */}
-        <div>
-          <div>
-            <span>pregunta {preguntaActual + 1} de </span> {preguntas.length}
+        <div className='block text-center mx-auto space-y-8 p-4'>
+          <span>Tienes Tiempo limitado para responder todas las preguntas</span>
+          <span className='text-2xl font-bold block text-center '>
+            pregunta {preguntaActual + 1} de {preguntas.length}
+          </span>
+
+          <div className='text-3xl block text-center'>
+            {preguntas[preguntaActual].titulo}
           </div>
-          <div>{preguntas[preguntaActual].titulo}</div>
           <div>
             {!desabilitado ? (
-              <span>Tiempo restante {tiempoRestante}</span>
+              <span className='text-xl font-extrabold'>
+                Tiempo restante: {tiempoRestante}
+              </span>
             ) : (
               <button
                 onClick={() => {
@@ -110,8 +130,8 @@ function App () {
           </div>
         </div>
         {/* lado derecho */}
-        <div className='border-t-2 lg:border-l-2  p-4 h-full'>
-          <div className=' flex flex-col gap-5 w-96 m-auto '>
+        <div className=' p-4 h-full'>
+          <div className=' flex flex-col gap-5 lg:w-96 m-auto '>
             {preguntas[preguntaActual].opciones.map((respuesta, idx) => (
               <button
                 disabled={desabilitado}
