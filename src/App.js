@@ -41,22 +41,24 @@ function App () {
         <span className='flex justify-center text-3xl font-bold'>
           Obtuviste {puntuacion} de {preguntas.length}
         </span>
-        <button
-          className=' border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-auto '
-          onClick={() => (window.location.href = '/')}
-        >
-          Volver a Jugar
-        </button>
-        <button
-          className=' border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-auto '
-          onClick={() => {
-            setIsFinished(false)
-            setMostrarRespuestas(true)
-            setPreguntaActual(0)
-          }}
-        >
-          Ver Respuestas
-        </button>
+        <div className='space-y-4 lg: flex flex-col items-center'>
+          <button
+            className=' border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-full  lg:w-96  '
+            onClick={() => (window.location.href = '/')}
+          >
+            Volver a Jugar
+          </button>
+          <button
+            className=' border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-full lg:w-96 '
+            onClick={() => {
+              setIsFinished(false)
+              setMostrarRespuestas(true)
+              setPreguntaActual(0)
+            }}
+          >
+            Ver Respuestas
+          </button>
+        </div>
       </div>
     )
   //return de mostrar respuestas
@@ -78,9 +80,9 @@ function App () {
             }
           </span>
         </div>
-        <div>
+        <div className='flex justify-center'>
           <button
-            className='border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-full '
+            className='border-2 border-black bg-blue-500 text-white p-2 rounded-md hover:bg-blue-300 hover:text-black w-full lg:w-96 '
             onClick={() => {
               if (preguntaActual === preguntas.length - 1) {
                 window.location.href = '/'
