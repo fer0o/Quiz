@@ -104,7 +104,9 @@ function App () {
       <div className='grid grid-cols-1 lg:grid-cols-2 border-2 border-black border-l-2 m-8 p-8'>
         {/* lado izquierdo */}
         <div className='block text-center mx-auto space-y-8 p-4'>
-          <span>Tienes Tiempo limitado para responder todas las preguntas</span>
+          <span className='text-3xl font-bold'>
+            Tienes Tiempo limitado para responder todas las preguntas
+          </span>
           <span className='text-2xl font-bold block text-center '>
             pregunta {preguntaActual + 1} de {preguntas.length}
           </span>
