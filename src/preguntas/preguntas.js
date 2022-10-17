@@ -34,7 +34,7 @@ const preguntas = [
       { textoRespuesta: '7', isCorrect: true },
       { textoRespuesta: '14', isCorrect: false },
       { textoRespuesta: '12', isCorrect: false },
-      { isCorrect: '22', isCorrect: false }
+      { textoRespuesta: '22', isCorrect: false }
     ]
   },
   {
